@@ -6,9 +6,9 @@ This repository contains the PlantUML source code used to generate diagrams for 
 
 You need to have the following programs installed before you could use plantuml to generate the diagrams:
 
-* A java runtime (OpenJDK, OpenJRE, etc): [](https://adoptopenjdk.net/)
+* A java runtime (OpenJDK, OpenJRE, etc): [https://adoptopenjdk.net/](https://adoptopenjdk.net/)
   * You may also consider using a package manager to install this tool
-* Graphviz: [](https://graphviz.org/download/)
+* Graphviz: [https://graphviz.org/download/](https://graphviz.org/download/)
   * You may also consider using a package manager to install this tool
   
 More information about setting the environment for plantuml is available [here](https://plantuml.com/starting)
