@@ -15,6 +15,8 @@ More information about setting the environment for plantuml is available [here](
 
 ## Installing PlantUML
 
+The following command will install plantuml from the [download page](https://plantuml.com/download).
+
 ``` sh
 curl -L -o plantuml.jar https://github.com/plantuml/plantuml/releases/download/v1.2026.1/plantuml-bsd-1.2026.1.jar
 ```
