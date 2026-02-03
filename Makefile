@@ -4,8 +4,12 @@
 # @file
 # @version 0.1
 
-all:
-	java -jar ./plantuml.jar "./src/**.puml" --output-dir ./output
+.PHONY: all
 
+all:
+	java -jar ./plantuml.jar "./src/**.puml"
+
+clean:
+	find . -type f -name "*.png" -exec rm {} +
 
 # end
