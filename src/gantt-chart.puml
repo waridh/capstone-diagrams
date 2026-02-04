@@ -1,28 +1,29 @@
 @startgantt
 Project starts 2026-01-01
 [Presentation] happens at 2026-04-11
-[Z80 Soft core] starts D+0 and ends 2026-04-01
+[Z80 Soft core] starts D+0 and ends 2026-03-15
 [Soft core Complete] happens at [Z80 Soft core]'s end
-[Datapath] starts D+3 and requires 60 days
+[Datapath] starts D+3 and ends at 2026-02-26
 [ALU] on {Bach} starts at [Datapath]'s start and ends 2026-01-31
+[Datapath fetch and decode] starts at [ALU]'s end and ends 2026-02-20
+[Ram] starts at 2026-02-13 and ends at 2026-02-20
+[ROM] starts at 2026-02-13 and ends at 2026-02-20
 [Register file] on {Kieran} starts at [Datapath]'s start and ends 2026-01-31
-[Ram] starts at 2026-02-8
-[ROM] starts at 2026-02-8
 [Datapath Top level architecture] on {Cole} ends at [Datapath]'s end
 [Completed Datapath] happens at [Datapath]'s end
 [Controller] ends at [Z80 Soft core]'s end
 [Completed Controller] happens at [Controller]'s end
-[Datapath] -> [Controller]
+[Datapath Top level architecture] -> [Controller]
 [Ram] -> [Datapath Top level architecture]
 [ALU] -> [Datapath Top level architecture]
 
-[PMOD VGA Output] ends at 2026-04-11
-[Input from keyboard] ends at 2026-04-11
-[Output to display] ends at 2026-04-11
+[PMOD VGA Output] ends at 2026-02-26 and starts at 2026-01-31
+[PMOD VGA Output] -> [Output to display]
+[Input from keyboard] ends at 2026-04-01 and starts at 2026-03-16
+[Output to display] ends at 2026-04-01
 [System IO] ends at [Input from keyboard]'s end
-[System IO] ends at [Output to display]'s end
 [Compilation of program] on {Nikolai:25} starts at 2026-01-28 and ends at 2026-02-28
 [Interrupts] ends 2026-04-11
-[Load the Adventure game] ends at [System IO]'s end
+[Load the Adventure game] starts at [System IO]'s end
 [Playing the Adventure game] happens at [Load the Adventure game]'s end
 @endgantt
