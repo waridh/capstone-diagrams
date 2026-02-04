@@ -3,9 +3,6 @@ Project starts 2026-01-01
 [Presentation] happens at 2026-04-11
 [Z80 Soft core] starts D+0 and ends 2026-04-01
 [Soft core Complete] happens at [Z80 Soft core]'s end
-[Load the Adventure game] ends 2026-04-11
-[Playing the Adventure game] happens at [Load the Adventure game]'s end
--- Tasks --
 [Datapath] starts D+3 and requires 60 days
 [ALU] on {Bach} starts at [Datapath]'s start and ends 2026-01-31
 [Register file] on {Kieran} starts at [Datapath]'s start and ends 2026-01-31
@@ -20,9 +17,12 @@ Project starts 2026-01-01
 [ALU] -> [Datapath Top level architecture]
 
 [PMOD VGA Output] ends at 2026-04-11
-[System IO] ends at 2026-04-11
 [Input from keyboard] ends at 2026-04-11
 [Output to display] ends at 2026-04-11
+[System IO] ends at [Input from keyboard]'s end
+[System IO] ends at [Output to display]'s end
 [Compilation of program] on {Nikolai:25} starts at 2026-01-28 and ends at 2026-02-28
 [Interrupts] ends 2026-04-11
+[Load the Adventure game] ends at [System IO]'s end
+[Playing the Adventure game] happens at [Load the Adventure game]'s end
 @endgantt
