@@ -1,14 +1,55 @@
 @startgantt
+hide resources name
+hide resources footbox
 Project starts 2026-01-01
-[Presentation] happens at 2026-04-11
-[Z80 Softcore] starts D+0 and ends 2026-04-01
-[Softcore Complete] happens at [Z80 Softcore]'s end
-[Load the Adventure game] ends 2026-04-11
-[Playing the Adventure game] happens at [Load the Adventure game]'s end
--- Tasks --
-[Datapath] starts D+3 and requires 60 days
-[ALU] on {Bach} starts at [Datapath]'s start and ends 2026-01-31
-[Register file] on {Kieran} starts at [Datapath]'s start and ends 2026-01-31
-[Datapath Top level architecture] ends at [Datapath]'s end
+[Project Proposal response] happens at 2026-01-24
+[Prototype BOM Submission] happens at 2026-01-24
+[PDD] happens at 2026-02-13
+[Project Plan] happens at 2026-02-13
+[PDD Update] happens at 2026-03-21
+[Requirements Traceability Matrix] happens at 2026-03-21
+[Presentation] happens at 2026-04-10
+[Final Report] happens at 2026-04-10
+[PDD] displays on same row as [Project Proposal response]
+[Project Plan] displays on same row as [Prototype BOM Submission]
+[PDD Update] displays on same row as [Project Proposal response]
+[Requirements Traceability Matrix] displays on same row as [Prototype BOM Submission]
+[Presentation] displays on same row as [Project Proposal response]
+[Final Report] displays on same row as [Prototype BOM Submission]
+[ALU] on {Bach} starts at D+3 and ends 2026-01-31 and is 100% complete
+[Register file] on {Kieran} starts at 2026-01-05 and ends 2026-01-31 and is 80% complete
+[Datapath fetch and decode] starts at [ALU]'s end and ends 2026-02-20 and is 10% complete
+[Ram] starts at 2026-02-13 and ends at 2026-02-20 and is 0% complete
+[ROM] starts at 2026-02-13 and ends at 2026-02-20 and is 0% complete
+[Datapath Top level architecture] on {Cole} ends at 2026-02-26 and is 0% complete
+[Datapath] starts D+3 and ends at 2026-02-26 and is 10% complete
 [Completed Datapath] happens at [Datapath]'s end
+[Interrupts] ends 2026-03-15 and starts at 2026-02-27 and is 0% complete
+[Controller Finite State Machine] starts at [Datapath]'s end and ends 2026-03-8 and is 0% complete
+[Controller] ends at 2026-03-25 and is 0% complete
+[Completed Controller] happens at [Controller]'s end
+[Z80 Soft core] starts D+3 and ends at [Controller]'s end and is 15% complete
+[Soft core Complete] happens at [Z80 Soft core]'s end
+[Controller Finite State Machine] -> [Controller]
+[Ram] -> [Datapath Top level architecture]
+[ROM] -> [Datapath Top level architecture]
+[ALU] -> [Datapath Top level architecture]
+[Register file] -> [Datapath Top level architecture]
+[Datapath fetch and decode] -> [Datapath Top level architecture]
+[Ram] displays on same row as [ALU]
+[ROM] displays on same row as [Register file]
+
+[PMOD VGA Output] ends at 2026-02-26 and starts at 2026-01-31 and is 5% complete
+[PMOD VGA Output] -> [Output to display]
+[Output to display] ends at 2026-03-24 and is 0% complete
+[Implemented Display] happens at [Output to display]'s end
+[Input from keyboard] ends at 2026-04-01 and starts at 2026-03-16 and is 0% complete
+[Implemented Input] happens at [Input from keyboard]'s end
+[System IO] ends at [Input from keyboard]'s end and starts at [PMOD VGA Output]'s start and is 2% complete
+[Implemented System IO] happens at [System IO]'s end
+[Compilation of program] on {Nikolai:25} starts at 2026-01-28 and ends at 2026-02-28 and is 80% complete
+[Load the Adventure game] starts at [System IO]'s end and ends at 2026-04-10
+[Playing the Adventure game] happens at [Load the Adventure game]'s end
+[Compilation of program] -> [Load the Adventure game]
+[Load the Adventure game] displays on same row as [Compilation of program] and is 0% complete
 @endgantt

@@ -1,8 +1,6 @@
 @startuml
 left to right direction
 :user:
-:monitor:
-:keyboard:
 package "Z80 FPGA" as z80 {
         usecase "Interact with loaded program" as interact_use
         usecase "Capture input" as cinput
@@ -11,13 +9,10 @@ package "Z80 FPGA" as z80 {
         usecase "Load program from SD card into memory" as load_sd
         usecase "Load program from ROM into memory" as load_rom
 }
-:user: -- interact_use
-:user: -- load
+:user: -- cinput
 interact_use ..> cinput : <<include>>
 interact_use ..> dout : <<include>>
 interact_use ..> load : <<include>>
 load <.. load_rom : <<extend>>
 load <.. load_sd : <<extend>>
-cinput -- :keyboard:
-dout -- :monitor:
 @enduml
