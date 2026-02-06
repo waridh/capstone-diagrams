@@ -37,15 +37,17 @@ Project starts 2026-01-01
 [Ram] displays on same row as [ALU]
 [ROM] displays on same row as [Register file]
 
--- Interfacing --
 [PMOD VGA Output] on {Kieran} ends at 2026-02-26 and starts at 2026-02-01 and is 5% complete
 [PMOD VGA Output] -> [Output to display]
 [Output to display] on {Kieran} {Cole} ends at 2026-03-25 and is 0% complete
 [Implemented Display] happens at [Output to display]'s end
-[Input from keyboard] on {Bach} {Cole} {Kieran} {Nikolai} ends at 2026-04-01 and starts at 2026-03-26 and is 0% complete
+[Input from keyboard] on {Bach:50%} {Cole:50%} {Kieran:50%} {Nikolai:50%} ends at 2026-04-01 and starts at 2026-03-26 and is 0% complete
 [Implemented Input] happens at [Input from keyboard]'s end
 [System IO] ends at [Input from keyboard]'s end and starts at [PMOD VGA Output]'s start and is 2% complete
 [Implemented System IO] happens at [System IO]'s end
+
+-- Firmware --
+[Keyboard input firmware] on {Bach:50%} {Cole:50%} {Kieran:50%} {Nikolai:50%} starts at [Input from keyboard]'s start and ends at [Input from keyboard]'s end and is 0% complete
 -- Software --
 [Compilation of program] on {Nikolai:25} starts at 2026-01-28 and ends at 2026-02-26 and is 80% complete
 [Load the Adventure game] on {Bach} {Cole} {Kieran} {Nikolai} starts at [System IO]'s end and ends at 2026-04-10
