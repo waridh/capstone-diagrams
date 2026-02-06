@@ -1,5 +1,6 @@
 @startgantt
 Project starts 2026-01-01
+-- Course Milestones --
 [Project Proposal response] happens at 2026-01-24
 [Prototype BOM Submission] happens at 2026-01-24
 [PDD] happens at 2026-02-13
@@ -14,6 +15,8 @@ Project starts 2026-01-01
 [Requirements Traceability Matrix] displays on same row as [Prototype BOM Submission]
 [Presentation] displays on same row as [Project Proposal response]
 [Final Report] displays on same row as [Prototype BOM Submission]
+
+-- Hardware --
 [ALU] on {Bach} starts at D+3 and ends 2026-01-31 and is 100% complete
 [Register file] on {Kieran} starts at 2026-01-05 and ends 2026-01-31 and is 80% complete
 [Datapath fetch and decode] on {Bach} {Cole:50%} {Nikolai:75%} starts at [ALU]'s end and ends 2026-02-20 and is 10% complete
@@ -34,6 +37,7 @@ Project starts 2026-01-01
 [Ram] displays on same row as [ALU]
 [ROM] displays on same row as [Register file]
 
+-- Interfacing --
 [PMOD VGA Output] on {Kieran} ends at 2026-02-26 and starts at 2026-02-01 and is 5% complete
 [PMOD VGA Output] -> [Output to display]
 [Output to display] on {Kieran} {Cole} ends at 2026-03-25 and is 0% complete
@@ -42,6 +46,7 @@ Project starts 2026-01-01
 [Implemented Input] happens at [Input from keyboard]'s end
 [System IO] ends at [Input from keyboard]'s end and starts at [PMOD VGA Output]'s start and is 2% complete
 [Implemented System IO] happens at [System IO]'s end
+-- Software --
 [Compilation of program] on {Nikolai:25} starts at 2026-01-28 and ends at 2026-02-26 and is 80% complete
 [Load the Adventure game] on {Bach} {Cole} {Kieran} {Nikolai} starts at [System IO]'s end and ends at 2026-04-10
 [Playing the Adventure game] happens at [Load the Adventure game]'s end
