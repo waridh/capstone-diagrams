@@ -7,10 +7,10 @@ left to right direction
 package "Z80 Compiler System" as z80 {
         usecase "Load Z80 program" as load
         usecase "Load Z80 Program into SD card" as sd_load
-        usecase "Load Z80 Program into FPGA ROM" as rom_load
+        usecase "Load Z80 Program into FPGA Memory" as rom_load
         usecase "Move constructed binary into SD card" as mv_sd
-        usecase "Generate FPGA ROM from binary" as gen_rom
-        usecase "Integrate new FPGA ROM into FPGA design" as mv_rom
+        usecase "Generate FPGA Memory content from binary" as gen_rom
+        usecase "Integrate FPGA memory content initalization into FPGA design" as mv_rom
         usecase "Create Binary" as cbin
         usecase "Compile binary" as compile
 }
@@ -23,8 +23,8 @@ load <|-- sd_load
 load <|-- rom_load
 sd_load ..> mv_sd : <<include>>
 
-rom_load ..> gen_rom : <<include>>
 rom_load ..> mv_rom : <<include>>
+rom_load ..> gen_rom : <<include>>
 
 mv_rom -- :Z80 FPGA:
 mv_sd -- :SD Card:
