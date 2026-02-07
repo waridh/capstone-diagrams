@@ -10,6 +10,10 @@ package "Z80 FPGA" as z80 {
         usecase "Capture input from keyboard subsystem" as cinput
         usecase "Display text" as dout
         usecase "Run program in memory" as load
+        usecase "Check the status of the peripherals" as peri_check
+        usecase "Check the status of the keyboard" as key_check
+        usecase "Check the status of the display" as display_check
+        usecase "Activate failed peripheral warning LED" as warn_led
         usecase "Load program from SD card into memory" as load_sd
         usecase "Initialize memory with program" as load_rom
 }
@@ -18,9 +22,15 @@ package "Z80 FPGA" as z80 {
 interact_use ..> cinput : <<include>>
 interact_use ..> dout : <<include>>
 interact_use ..> execute_system : <<include>>
+boot_use ..> peri_check : <<include>>
+boot_use <.. warn_led : <<extend>>
 boot_use ..> load : <<include>>
-load <. load_rom : <<extend>>
-load <. load_sd : <<extend>>
+peri_check ..> key_check : <<include>>
+peri_check ..> display_check : <<include>>
+load <.. load_rom : <<extend>>
+load <.. load_sd : <<extend>>
+display_check -- :display:
+key_check -- :keyboard:
 cinput -- :keyboard:
 dout -- :display:
 @enduml
