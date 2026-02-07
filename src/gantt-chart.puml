@@ -19,15 +19,15 @@ Project starts 2026-01-01
 -- Hardware --
 [ALU] on {Bach} starts at D+3 and ends 2026-01-31 and is 100% complete
 [Register file] on {Kieran} starts at 2026-01-05 and ends 2026-01-31 and is 80% complete
-[Datapath fetch and decode] on {Bach} {Cole:50%} {Nikolai:75%} starts at [ALU]'s end and ends 2026-02-20 and is 10% complete
-[Ram] on {Bach} starts at [Datapath fetch and decode]'s end and ends at 2026-02-26 and is 0% complete
-[ROM] on {Nikolai:75%} starts at [Datapath fetch and decode]'s end and ends at 2026-02-26 and is 0% complete
-[Datapath Top level architecture] on {Cole:50%} ends at 2026-02-26 and is 0% complete
-[Datapath] starts D+3 and ends at 2026-02-26 and is 10% complete
+[Datapath fetch and decode] on {Bach} {Cole:50%} {Nikolai:75%} starts at [ALU]'s end and ends 2026-02-18 and is 10% complete
+[Ram] on {Bach} starts at [Datapath fetch and decode]'s end and ends at 2026-02-24 and is 0% complete
+[ROM] on {Nikolai:75%} starts at [Datapath fetch and decode]'s end and ends at 2026-02-24 and is 0% complete
+[Datapath Top level architecture] on {Cole:50%} ends at 2026-02-24 and is 0% complete
+[Datapath] starts D+3 and ends at 2026-02-24 and is 10% complete
 [Completed Datapath] happens at [Datapath]'s end
-[Interrupts] on {Nikolai:50%} ends 2026-03-15 and starts at 2026-02-27 and is 0% complete
-[Controller Finite State Machine] on {Bach} {Nikolai:50%} starts at [Datapath]'s end and ends 2026-03-8 and is 0% complete
-[Controller] on {Bach} {Nikolai:50%} ends at 2026-03-25 and is 0% complete
+[Interrupts] on {Nikolai:50%} ends 2026-03-15 and starts at 2026-02-25 and is 0% complete
+[Controller Finite State Machine] on {Bach} starts at [Datapath]'s end and ends 2026-03-8 and is 0% complete
+[Controller] on {Bach} ends at 2026-03-25 and is 0% complete
 [Completed Controller] happens at [Controller]'s end
 [Z80 Soft core] starts D+3 and ends at [Controller]'s end and is 15% complete
 [Soft core Complete] happens at [Z80 Soft core]'s end
@@ -37,19 +37,21 @@ Project starts 2026-01-01
 [Ram] displays on same row as [ALU]
 [ROM] displays on same row as [Register file]
 
+-- Interfacing --
 [PMOD VGA Output] on {Kieran} ends at 2026-02-26 and starts at 2026-02-01 and is 5% complete
 [PMOD VGA Output] -> [Output to display]
-[Output to display] on {Kieran} {Cole} ends at 2026-03-25 and is 0% complete
+[Output to display] on {Kieran:50%} {Cole:50%} ends at 2026-03-25 and is 0% complete
 [Implemented Display] happens at [Output to display]'s end
 [Input from keyboard] on {Bach:50%} {Cole:50%} {Kieran:50%} {Nikolai:50%} ends at 2026-04-01 and starts at 2026-03-26 and is 0% complete
 [Implemented Input] happens at [Input from keyboard]'s end
 [System IO] ends at [Input from keyboard]'s end and starts at [PMOD VGA Output]'s start and is 2% complete
 [Implemented System IO] happens at [System IO]'s end
 
--- Firmware --
-[Keyboard input firmware] on {Bach:50%} {Cole:50%} {Kieran:50%} {Nikolai:50%} starts at [Input from keyboard]'s start and ends at [Input from keyboard]'s end and is 0% complete
 -- Software --
-[Compilation of program] on {Nikolai:25} starts at 2026-01-28 and ends at 2026-02-26 and is 80% complete
+[Interrupt procedures] on {Nikolai:50%} starts at [Interrupts]'s start and ends at 2026-03-23 and is 0% complete
+[Output handling procedures] on {Kieran:50%} {Cole:50%} starts at [Output to display]'s start and is 0% complete and ends at [Output to display]'s end
+[Keyboard handling procedures] on {Bach:50%} {Cole:50%} {Kieran:50%} {Nikolai:50%} starts at [Input from keyboard]'s start and ends at [Input from keyboard]'s end and is 0% complete
+[Compilation of program] on {Nikolai:25} starts at 2026-01-28 and ends at 2026-02-24 and is 80% complete
 [Load the Adventure game] on {Bach} {Cole} {Kieran} {Nikolai} starts at [System IO]'s end and ends at 2026-04-10
 [Playing the Adventure game] happens at [Load the Adventure game]'s end
 [Compilation of program] -> [Load the Adventure game]
