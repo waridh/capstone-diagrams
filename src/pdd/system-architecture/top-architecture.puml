@@ -1,0 +1,27 @@
+@startuml
+frame "Emulated Zilog Z80 Deployment" {
+        node "Zybo Z7"  {
+                component "Z80 soft core" as z80_sc
+                component "Display adapter" as display_adpt
+                component "keyboard adapter" as keyboard_adpt
+                component "target program" as program
+                z80_sc -- display_adpt
+                z80_sc -- keyboard_adpt
+                z80_sc ..> program : Loaded at boot
+        }
+        node "Compiler System" {
+                file "Target program source code" as program_source
+                component "z88dk" as compiler
+
+                compiler ..> program_source : Takes source as input
+        }
+        node "USB keyboard" as keyboard
+        component "Zybo Z7 to RCA adapter" as rca_adpt
+        node "Retro display" as display
+
+        keyboard_adpt -(0- keyboard
+        display_adpt -(0- rca_adpt
+        rca_adpt -- display
+        compiler <.. program : Compiler constructs runnable binary
+}
+@enduml
