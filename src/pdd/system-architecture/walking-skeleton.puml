@@ -3,9 +3,7 @@ frame "Emulated Zilog Z80 Deployment" {
         node "Zybo Z7"  {
                 component "Z80 soft core" as z80_sc
                 component "UART adapter" as uart_adpt
-                component "target program" as program
-                z80_sc - uart_adpt
-                z80_sc ..> program : Loaded at boot
+                z80_sc -- uart_adpt
         }
         node "Compiler System" {
                 file "Target program source code" as program_source
@@ -18,8 +16,13 @@ frame "Emulated Zilog Z80 Deployment" {
         node "Host machine" {
                 component putty
         }
-
+        node "Xilinx Vivado" as vivado
+        artifact "target program" as program
+        file "Z80 design source" as z80_src
         uart_adpt -(0- putty
-        compiler <.. program : Compiler constructs runnable binary
+        compiler <. program : Compiler constructs runnable binary
+        vivado ..> program : Loads program with Z80 design
+        vivado ..> z80_src
+        z80_sc .> vivado
 }
 @enduml
