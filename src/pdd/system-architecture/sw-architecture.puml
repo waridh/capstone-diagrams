@@ -1,0 +1,14 @@
+@startuml
+frame "Emulated Zilog Z80 Software Component" {
+        artifact program
+        node "Compiler System" {
+                file "Target program source code" as program_source
+                component "z88dk" as compiler
+                component "IO Hooks" as hooks
+                compiler ..> program_source : Takes source as input
+                compiler ..> hooks : Uses hooks for IO handling
+        }
+
+        compiler <. program : Compiler constructs runnable binary
+}
+@enduml
