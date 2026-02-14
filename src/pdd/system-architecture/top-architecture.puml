@@ -5,8 +5,10 @@ frame "Emulated Zilog Z80 Deployment" {
                 component "Display adapter" as display_adpt
                 component "keyboard adapter" as keyboard_adpt
                 component "target program" as program
+                component "UART adapter" as uart_adpt
                 z80_sc -- display_adpt
                 z80_sc -- keyboard_adpt
+                z80_sc - uart_adpt
                 z80_sc ..> program : Loaded at boot
         }
         node "Compiler System" {
@@ -17,13 +19,22 @@ frame "Emulated Zilog Z80 Deployment" {
                 compiler ..> program_source : Takes source as input
                 compiler ..> hooks : Uses hooks for IO handling
         }
+        node "Host System" {
+             component putty
+        }
+        node "Xilinx Vivado" as vivado
+        file "Z80 design source" as z80_src
         node "USB keyboard" as keyboard
         component "Zybo Z7 to RCA adapter" as rca_adpt
         node "Retro display" as display
 
+        vivado <.. z80_sc
+        vivado .> z80_src
+        vivado <.. program : For direct load into design
         keyboard_adpt -(0- keyboard
         display_adpt -(0- rca_adpt
         rca_adpt -- display
-        compiler <.. program : Compiler constructs runnable binary
+        program ..> compiler : compiler constructs runnable binary
+        uart_adpt -(0)- putty
 }
 @enduml
