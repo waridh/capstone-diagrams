@@ -1,0 +1,9 @@
+@startuml
+start
+partition Fetch {
+        :fetch 4 bytes;
+        :pattern match the opcode to find the length;
+        :increment the PC by the length;
+}
+
+@enduml
