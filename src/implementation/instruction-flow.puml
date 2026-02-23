@@ -1,9 +1,20 @@
 @startuml
 start
+while (processor not halted?) is (yes)
 partition Fetch {
         :fetch 4 bytes;
         :pattern match the opcode to find the length;
         :increment the PC by the length;
 }
-
+partition Decode {
+        :put the operand in the operand buffer registers;
+}
+partition Execute {
+        :do the instruction;
+}
+partition "Write back" {
+        :write the result back to desitination;
+}
+endwhile (no)
+stop
 @enduml
