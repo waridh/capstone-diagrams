@@ -5,6 +5,7 @@ partition Fetch {
         :fetch 4 bytes;
         :pattern match the opcode to find the length;
         :increment the PC by the length;
+        :potentially wait for n cycle to match the original implementation;
 }
 partition Decode {
         :put the operand in the operand buffer registers;
