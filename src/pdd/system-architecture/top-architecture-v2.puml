@@ -1,0 +1,66 @@
+@startuml
+frame "Emulated Zilog Z80 Deployment" {
+        node "Zybo Z7"  {
+                component "ARM Core(s)" as arm_core
+                component "Programmable Logic" as fpga
+                component arm_core {
+                        component "Interfacing adapters" as intf_adpt
+                        component intf_adpt {
+                                component "Display adapter" as display_adpt
+                                component "keyboard adapter" as keyboard_adpt
+                                component "UART adapter" as uart_adpt
+                                component "SD card adapter" as sd_adpt
+                                display_adpt -[hidden] keyboard_adpt
+                                keyboard_adpt -[hidden] uart_adpt
+                                uart_adpt -[hidden] sd_adpt
+                        }
+                }
+                component fpga {
+                        component "PL interface adapter" as pl_adpt
+                        component "Z80 soft core" as z80_sc
+                        component "processor memory" as pl_mem
+                        z80_sc -- pl_adpt
+                        z80_sc -- pl_mem
+                        pl_adpt - pl_mem
+                }
+                pl_adpt -(0- display_adpt
+                pl_adpt -(0- sd_adpt
+                pl_adpt -(0- keyboard_adpt
+                pl_adpt -(0- uart_adpt
+        }
+        node "Compiler System" {
+                file "Target program source code" as program_source
+                component "Chosen compiler" as compiler
+                note left of compiler
+                        Able to compile historically accurate
+                        programming language source code.
+                end note
+                component "IO Hooks" as hooks
+
+                compiler ..> program_source : Takes source as input
+                compiler ..> hooks : Uses hooks for IO handling
+        }
+        node "Host System" {
+             component putty
+        }
+        component "External SD card" as sd_card
+        component sd_card {
+                        file "target program" as program
+        }
+        node "Xilinx Vivado" as vivado
+        file "Z80 design source" as z80_src
+        node "USB keyboard" as keyboard
+        component "Zybo Z7 to RCA adapter" as rca_adpt
+        node "Retro display" as display
+
+        vivado <.. z80_sc
+        vivado .> z80_src
+        keyboard_adpt -(0- keyboard
+        display_adpt -(0- rca_adpt
+        sd_adpt -(0- sd_card
+        rca_adpt -- display
+        pl_mem ..> program : Loaded at boot
+        compiler <.. program : compiler constructs runnable binary
+        uart_adpt -(0)- putty
+}
+@enduml
