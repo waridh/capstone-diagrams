@@ -1,9 +1,8 @@
 @startuml
 frame "Emulated Zilog Z80 Deployment" {
         node "Zybo Z7"  {
-                component "ARM Core(s)" as arm_core
                 component "Programmable Logic" as fpga
-                component arm_core {
+                component fpga {
                         component "Interfacing adapters" as intf_adpt
                         component intf_adpt {
                                 component "Display adapter" as display_adpt
@@ -14,9 +13,7 @@ frame "Emulated Zilog Z80 Deployment" {
                                 keyboard_adpt -[hidden] uart_adpt
                                 uart_adpt -[hidden] sd_adpt
                         }
-                }
-                component fpga {
-                        component "PL interface adapter" as pl_adpt
+                        component "processor to interface adapter" as pl_adpt
                         component "Z80 soft core" as z80_sc
                         component "processor memory" as pl_mem
                         z80_sc -- pl_adpt
