@@ -14,7 +14,7 @@ frame "Emulated Zilog Z80 Deployment" {
                                 uart_adpt -[hidden] sd_adpt
                         }
                         component "processor to interface adapter" as pl_adpt
-                        component "Z80 soft core" as z80_sc
+                        component "Processor soft core" as z80_sc
                         component "processor memory" as pl_mem
                         z80_sc -- pl_adpt
                         z80_sc -- pl_mem
@@ -46,15 +46,19 @@ frame "Emulated Zilog Z80 Deployment" {
         }
         node "Xilinx Vivado" as vivado
         file "Z80 design source" as z80_src
-        node "USB keyboard" as keyboard
-        component "Zybo Z7 to RCA adapter" as rca_adpt
+        node "PIO keyboard" as keyboard
+        component "VGA to RCA adapter" as rca_adpt
+        component "PMOD to VGA adapter" as pmod_vga
+        component "USB to PIO adapter" as usb_pio
         node "Retro display" as display
 
         vivado <.. z80_sc
         vivado .> z80_src
-        keyboard_adpt -(0- keyboard
-        display_adpt -(0- rca_adpt
+        keyboard_adpt -(0- usb_pio
+        usb_pio -(0- keyboard
+        display_adpt -(0- pmod_vga
         sd_adpt -(0- sd_card
+        pmod_vga -(0)- rca_adpt
         rca_adpt -- display
         pl_mem ..> program : Loaded at boot
         compiler <.. program : compiler constructs runnable binary
